@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="langowski.simon.personalscheduler.Activities.EventCreationActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/title_of_event"
+                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    />
+
+                <EditText
+                    android:id="@+id/importance"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="Offset"/>
+            </LinearLayout>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:layout_below="@id/layout"
+                android:hint="Notes"/>
+
+
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/description"
+                android:datePickerMode="calendar">
+
+            </DatePicker>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Add Event"
+                android:layout_below="@id/datePicker"/>
+
+            <Button
+                android:id="@+id/delete"
+                android:text="Delete Event"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>
