@@ -108,7 +108,6 @@ public class TaskActivity extends AppCompatActivity {
                         break;
                     }
                     adapter.add(addedEvent);
-                    adapter.notifyDataSetChanged();
                     writeData();
                 }
                 break;
@@ -123,8 +122,6 @@ public class TaskActivity extends AppCompatActivity {
                         break;
                     }
                     adapter.replace(location, addedEvent);
-                    writeData();
-                    adapter.notifyDataSetChanged();
                     writeData();
                 }
                 break;

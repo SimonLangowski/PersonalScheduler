@@ -31,7 +31,7 @@ import langowski.simon.personalscheduler.R;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.AreaViewHolder> {
 
-    private static DateTimeFormatter dtfOut = DateTimeFormat.forPattern("MM/dd/yyyy");
+    private static DateTimeFormatter dtfOut = DateTimeFormat.forPattern("E MM/dd/yyyy");
     private ArrayList<Event> dataset;
     private Context context;
     public static final int EDIT_REQUEST = 7;
@@ -62,13 +62,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.AreaViewHolder
         holder.date.setText(dtfOut.print(e.getEventDate()));
         holder.score.setText(e.getFormattedScore());
         if (e.isComplete()){
-            holder.score.setText(" C ");
+            holder.score.setText("C");
             holder.score.setTextColor(Color.GREEN);
         } else if (e.isFlagged()){
-            holder.score.setText(" ! ");
+            holder.score.setText("!");
             holder.score.setTextColor(Color.YELLOW);
             if (e.getDaysRemaining() <= 0){
-                holder.score.setText(" !! ");
+                holder.score.setText("!!");
                 holder.score.setTextColor(Color.RED);
             }
         } else {
@@ -122,6 +122,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.AreaViewHolder
     public void add(Event e){
         dataset.add(e);
         Collections.sort(dataset);
+        notifyDataSetChanged();
     }
 
     public void remove(int index){
@@ -129,8 +130,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.AreaViewHolder
     }
 
     public void replace(int index, Event e){
-        dataset.set(index, e);
-        Collections.sort(dataset);
+        if (dataset.get(index).getScore() == e.getScore()) {
+            dataset.set(index, e);
+            notifyItemChanged(index);
+        } else {
+            dataset.set(index, e);
+            Collections.sort(dataset);
+            notifyDataSetChanged();
+        }
     }
 
     public ArrayList<Event> getDataset(){
