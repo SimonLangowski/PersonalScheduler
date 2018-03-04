@@ -39,6 +39,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.AreaViewHolder
     public TaskAdapter(Context context, ArrayList<Event> dataset){
         this.dataset = dataset;
         this.context = context;
+        for (int i = 0; i < dataset.size(); i++){
+            if ((dataset.get(i).getDaysRemaining() < -7) && (dataset.get(i).isComplete())){
+                dataset.remove(i);
+                i--;
+            }
+        }
         Collections.sort(dataset);
     }
 

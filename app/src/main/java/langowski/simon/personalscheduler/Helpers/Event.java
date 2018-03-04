@@ -114,6 +114,7 @@ public class Event implements Serializable, Comparable<Event>{
     }
 
     public int getDaysRemaining() {
+        daysRemaining = -Days.daysBetween(eventDate.toLocalDate(), Instant.now().toDateTime().toLocalDate()).getDays();
         return daysRemaining;
     }
 
